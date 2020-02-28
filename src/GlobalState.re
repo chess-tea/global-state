@@ -16,7 +16,42 @@ module type Config = {
   let equals: (state, state) => bool;
 };
 
-module Make = (Config: Config) => {
+type hook('a, 'b) = Revery_UI.React.Hooks.t('a, 'b);
+
+module type Output = {
+  type state;
+  type action;
+
+  let dispatch: action => unit;
+  let getState: unit => state;
+
+  open Revery_UI.React;
+  let useState:
+    (
+      unit,
+      Hooks.t(
+        (Hooks.State.t(state), Hooks.Effect.t(Hooks.Effect.always)) => 'a,
+        'b,
+      )
+    ) =>
+    (
+      (state, action => unit),
+      Hooks.t(
+        'a,
+        'b,
+      ),
+    );
+};
+
+module Make =
+       (Config: Config)
+
+         : (
+           Output with type state = Config.state and type action = Config.action
+       ) => {
+  type action = Config.action;
+  type state = Config.state;
+
   module Cache = {
     type handler = {
       fn: unit => unit,
