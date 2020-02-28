@@ -1,0 +1,10 @@
+(library
+  (public_name global-state)
+  (name GlobalState)
+  (libraries
+    Revery
+    timber
+  )
+  (preprocess (pps brisk-reconciler.ppx))
+)
+(include_subdirs unqualified)

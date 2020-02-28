@@ -1,0 +1,17 @@
+(library
+  (name Tests)
+  (ocamlopt_flags -linkall -g)
+  (libraries
+    global-state
+    rely.lib
+  )
+  (modules :standard \ TestExe)
+)
+(executable
+  (package global-state)
+  (name TestExe)
+  (public_name TestExe)
+  (libraries Tests)
+  (modules TestExe)
+)
+(include_subdirs unqualified)

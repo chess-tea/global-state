@@ -1,0 +1,40 @@
+{
+  "name": "global-state",
+  "version": "0.0.1",
+  "description": "Global state hooks for Revery",
+  "license": "MIT",
+  "esy": {
+    "build": "refmterr dune build --profile=release",
+    "buildsInSource": "_build",
+    "buildEnv": {
+      "ODOC_SYNTAX": "re"
+    },
+    "install": [
+      "esy-installer global-state.install",
+      "esy-installer ExampleExe.install"
+    ]
+  },
+  "scripts": {
+    "format": "./scripts/format",
+    "run": "esy x ExampleExe",
+    "test": "esy x TestExe --onlyPrintDetailsForFailedSuites"
+  },
+  "dependencies": {
+    "@brisk/brisk-reconciler": "github:briskml/brisk-reconciler#0a2e476",
+    "@esy-ocaml/reason": "^3.4.0",
+    "@reason-native/rely": "^3.1.0",
+    "revery": "revery-ui/revery#5438851",
+    "timber": "*"
+  },
+  "resolutions": {
+    "@esy-ocaml/libffi": "esy-ocaml/libffi#c61127d",
+    "@opam/cmdliner": "1.0.2",
+    "esy-cmake": "prometheansacrifice/esy-cmake#2a47392def755",
+    "timber": "glennsl/timber#ae065bb"
+  },
+  "devDependencies": {
+    "ocaml": "~4.8",
+    "@opam/merlin": "^3.3.2",
+    "@opam/dune": "^1.8.0"
+  }
+}
