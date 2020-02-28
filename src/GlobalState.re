@@ -72,6 +72,10 @@ module Make = (Config: Config) => {
     };
   };
 
+  let getState = () => Cache.get();
+
+  let dispatch = action => Cache.dispatch(action);
+
   let useState = () => {
     // Log.debug("Use state");
     let state = Cache.get();
