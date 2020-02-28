@@ -34,13 +34,7 @@ module type Output = {
         'b,
       )
     ) =>
-    (
-      (state, action => unit),
-      Hooks.t(
-        'a,
-        'b,
-      ),
-    );
+    ((state, action => unit), Hooks.t('a, 'b));
 };
 
 module Make =
