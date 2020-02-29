@@ -16,7 +16,9 @@ module type Config = {
   let equals: (state, state) => bool;
 };
 
-type hook('a, 'b) = Revery_UI.React.Hooks.t('a, 'b);
+module Defaults = {
+  let equals = (==);
+};
 
 module type Output = {
   type state;
@@ -24,6 +26,7 @@ module type Output = {
 
   let dispatch: action => unit;
   let getState: unit => state;
+  let subscribe: (unit => unit, unit) => unit;
 
   open Revery_UI.React;
   let useState:
@@ -104,6 +107,8 @@ module Make =
   let getState = () => Cache.get();
 
   let dispatch = action => Cache.dispatch(action);
+
+  let subscribe = onChange => Cache.register(onChange);
 
   let useState = () => {
     // Log.debug("Use state");
