@@ -1,6 +1,6 @@
 {
   "name": "global-state",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Global state hooks for Revery",
   "license": "MIT",
   "esy": {
