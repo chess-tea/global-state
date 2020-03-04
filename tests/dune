@@ -1,6 +1,7 @@
 (library
   (name Tests)
-  (ocamlopt_flags -linkall -g)
+  (ocamlopt_flags -linkall -g -w -9-27)
+  (ocamlc_flags -w -9-27)
   (libraries
     global-state
     rely.lib
@@ -8,9 +9,7 @@
   (modules :standard \ TestExe)
 )
 (executable
-  (package global-state)
   (name TestExe)
-  (public_name TestExe)
   (libraries Tests)
   (modules TestExe)
 )

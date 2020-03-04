@@ -1,4 +1,4 @@
-module Log = (val Timber.Log.withNamespace("GlobalState"));
+module Log = (val Revery.Log.withNamespace("GlobalState"));
 
 exception OngoingUpdate;
 

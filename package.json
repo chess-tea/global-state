@@ -4,37 +4,41 @@
   "description": "Global state hooks for Revery",
   "license": "MIT",
   "esy": {
-    "build": "refmterr dune build --profile=release",
-    "buildsInSource": "_build",
+    "build": "dune build -p #{self.name}",
+    "buildDev": [
+      "refmterr dune build ./example/ExampleExe.exe",
+      "refmterr dune build ./tests/TestExe.exe"
+    ],
     "buildEnv": {
       "ODOC_SYNTAX": "re"
     },
     "install": [
-      "esy-installer global-state.install",
-      "esy-installer ExampleExe.install"
+      "esy-installer global-state.install"
     ]
   },
   "scripts": {
     "format": "./scripts/format",
-    "run": "esy x ExampleExe",
-    "test": "esy x TestExe --onlyPrintDetailsForFailedSuites"
+    "test": "esy #{self.target_dir}/default/tests/TestExe.exe --onlyPrintDetailsForFailedSuites",
+    "run": "esy #{self.target_dir}/default/example/ExampleExe.exe"
   },
   "dependencies": {
-    "@brisk/brisk-reconciler": "github:briskml/brisk-reconciler#0a2e476",
-    "@esy-ocaml/reason": "^3.4.0",
+    "revery": "revery-ui/revery#431d925",
+    "@brisk/brisk-reconciler": "briskml/brisk-reconciler#34e5991",
+    "ocaml": "^4.08.0",
+    "@opam/dune": "^1.11.4",
+    "@esy-ocaml/reason": "< 4.0.0"
+  },
+  "devDependencies": {
     "@reason-native/rely": "^3.1.0",
-    "revery": "revery-ui/revery#5438851",
-    "timber": "*"
+    "@opam/merlin": "*",
+    "@opam/dune": "^1.8.0",
+    "ocaml": "<= 4.08.0",
+    "refmterr": "*",
+    "@glennsl/timber": "*"
   },
   "resolutions": {
     "@esy-ocaml/libffi": "esy-ocaml/libffi#c61127d",
-    "@opam/cmdliner": "1.0.2",
     "esy-cmake": "prometheansacrifice/esy-cmake#2a47392def755",
-    "timber": "glennsl/timber#ae065bb"
-  },
-  "devDependencies": {
-    "ocaml": "~4.8",
-    "@opam/merlin": "^3.3.2",
-    "@opam/dune": "^1.8.0"
+    "@opam/cmdliner": "1.0.2"
   }
 }

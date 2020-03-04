@@ -13,7 +13,7 @@ describe("Example", ({test}) => {
   });
 
   test("3", ({expect}) => {
-    open GlobalState;
+    // open GlobalState;
     let actual = 42;
     let expected = 42;
 
