@@ -11,10 +11,7 @@
     ],
     "buildEnv": {
       "ODOC_SYNTAX": "re"
-    },
-    "install": [
-      "esy-installer global-state.install"
-    ]
+    }
   },
   "scripts": {
     "format": "./scripts/format",
@@ -22,16 +19,15 @@
     "run": "esy #{self.target_dir}/default/example/ExampleExe.exe"
   },
   "dependencies": {
-    "revery": "revery-ui/revery#431d925",
-    "@brisk/brisk-reconciler": "briskml/brisk-reconciler#34e5991",
+    "revery": "^0.29.0",
+    "@brisk/brisk-reconciler": "*",
     "ocaml": "^4.08.0",
-    "@opam/dune": "^1.11.4",
+    "@opam/dune": "^1.8.0",
     "@esy-ocaml/reason": "< 4.0.0"
   },
   "devDependencies": {
     "@reason-native/rely": "^3.1.0",
     "@opam/merlin": "*",
-    "@opam/dune": "^1.8.0",
     "ocaml": "<= 4.08.0",
     "refmterr": "*",
     "@glennsl/timber": "*"
@@ -39,6 +35,8 @@
   "resolutions": {
     "@esy-ocaml/libffi": "esy-ocaml/libffi#c61127d",
     "esy-cmake": "prometheansacrifice/esy-cmake#2a47392def755",
-    "@opam/cmdliner": "1.0.2"
+    "@opam/cmdliner": "1.0.2",
+    "@brisk/brisk-reconciler": "briskml/brisk-reconciler#34e5991",
+    "revery": "revery-ui/revery#431d925"
   }
 }
